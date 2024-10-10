@@ -1,0 +1,83 @@
+import java.lang.Math;
+import java.util.Scanner;
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Zadanie 1");
+        Object d1 = 23.0 + 76;
+        Object d2 = 41 * 2.0 + 3;
+        Object d3 = 5 - 33;
+        Object d4 = 109 % 3;
+        Object d5 = 50 / 2;
+        Object d6 = 4 | 2;
+        Object d7 = 3 ^ 5;
+        Object d8 = 7 & 9;
+        System.out.println(d1.getClass());
+        System.out.println(d2.getClass());
+        System.out.println(d3.getClass());
+        System.out.println(d4.getClass());
+        System.out.println(d5.getClass());
+        System.out.println(d6.getClass());
+        System.out.println(d7.getClass());
+        System.out.println(d8.getClass());
+        System.out.println(" ");
+        System.out.println("Zadanie 2");
+        double dzialJeden = ((Math.sqrt(7) - 1)/2) + Math.pow(3, 3)%2;
+        double dzialDwa = (2003/25) * 6;
+        double dzialTrzy = (3 + Math.sqrt(3))/((Math.sqrt(5)/2)/3) + 1;
+        double dzialCztery = 10%3%2;
+        double dzialPiec = ((8%6)+1)/Math.pow(2, 1/4);
+        int wynikJeden = (int)dzialJeden;
+        int wynikDwa = (int)dzialDwa;
+        int wynikTrzy = (int)dzialTrzy;
+        int wynikCztery = (int)dzialCztery;
+        int wynikPiec = (int)dzialPiec;
+        System.out.println(wynikJeden);
+        System.out.println(wynikDwa);
+        System.out.println(wynikTrzy);
+        System.out.println(wynikCztery);
+        System.out.println(wynikPiec);
+        System.out.println(" ");
+        System.out.println("Zadanie 3");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Podaj pierwsze slowo: ");
+        String s1 = scanner.nextLine();
+        System.out.print("Podaj drugie slowo: ");
+        String s2 = scanner.nextLine();
+        System.out.println(s1 + " " + s2);
+        scanner.close();
+        System.out.println(" ");
+        System.out.println("Zadanie 4");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Podaj pierwsza liczbe: ");
+        int liczbaP = scanner.nextInt();
+        System.out.print("Podaj druga liczbe: ");
+        int liczbaD = scanner.nextInt();
+        int suma = liczbaP + liczbaD;
+        int roz = liczbaP - liczbaD;
+        int czyn = liczbaP * liczbaD;
+        int raz = liczbaP / liczbaD;
+        System.out.println("Suma: " + suma);
+        System.out.println("Roznica: " + roz);
+        System.out.println("Iloczyn " + czyn);
+        System.out.println("Iloraz: " + raz);
+        scanner.close();
+        System.out.println(" ");
+        System.out.println("Zadanie 5");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Podaj liczbe x: ");
+        int x = scanner.nextInt();
+        int pow = x + 140;
+        int pom = x - 31;
+        int pow2 = x * 7;
+        int pom2 = x / 13;
+        int mod = x%7;
+        System.out.println("Liczba x powiekszona o 140: " + pow);
+        System.out.println("Liczba x pomniejszona o 31: " + pom);
+        System.out.println("Liczba x powiekszona 7 razy: " + pow2);
+        System.out.println("Liczba x pomniejszona 13 razy: " + pom2);
+        System.out.println("Liczba x modulo 7: " + mod);
+    }
+}
