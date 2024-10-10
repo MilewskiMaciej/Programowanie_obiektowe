@@ -74,10 +74,14 @@ class HelloWorld {
         int pow2 = x * 7;
         int pom2 = x / 13;
         int mod = x%7;
+        int cal = x/4;
+        double pot = Math.pow(x, 45);
         System.out.println("Liczba x powiekszona o 140: " + pow);
         System.out.println("Liczba x pomniejszona o 31: " + pom);
         System.out.println("Liczba x powiekszona 7 razy: " + pow2);
         System.out.println("Liczba x pomniejszona 13 razy: " + pom2);
         System.out.println("Liczba x modulo 7: " + mod);
+        System.out.println("Liczba x - czesc calkowita z dzielenia przez 4: " + cal);
+        System.out.println("Liczba x podniesiona do potegi 67: " + pot);
     }
 }
