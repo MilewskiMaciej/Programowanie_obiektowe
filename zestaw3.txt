@@ -1,0 +1,70 @@
+import java.lang.Math;
+
+class HelloWorld {
+    
+    public static void liczbyPodzielne(double m, int n) {
+        for(int i = 0; i <= Math.pow(10, m) - 1; i++) {
+            if (i%n == 0) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+    
+    public static void piramida(int n, int variant) {
+        if(variant == 1) {
+            for(int i = 1; i <= n; i++) {
+                System.out.println("* ".repeat(i));
+            }
+        }
+    }
+    
+    public static void silnia(int n) {
+        int wynik = 1;
+        for(int i = 1; i <= n; i++) {
+            wynik = wynik*i;
+        }
+        System.out.print(wynik);
+    }
+    
+    public static void silniaPodwojna(int n) {
+        int wynik = 1;
+        int i = n;
+        while (i > 0) {
+            wynik = wynik * i;
+            i = i-2;
+        }
+        System.out.print(wynik);
+    }
+    
+    public static void silnia(int m, int n) {
+        int wynik = 1;
+        int i = n;
+        while (i > 0) {
+            wynik = wynik * i;
+            i = i-m;
+        }
+        System.out.print(wynik);
+    }
+    
+    public static void dwumianNewtona(int n, int k) {
+        int wynikS = 1;
+        int wynikK = 1;
+        int nawias = n-k;
+        int wynikNawias = 1;
+        for(int i = 1; i<=n;i++) {
+            wynikS = wynikS*i;
+        }
+        for(int j = 1; j<=k; j++) {
+            wynikK = wynikK*j;
+        }
+        for(int l = 1; l<=nawias;l++) {
+            wynikNawias = wynikNawias * l;
+        }
+        int wynikOstateczny = wynikS/(wynikK*wynikNawias);
+        System.out.print(wynikOstateczny);
+    }
+    
+    public static void main(String[] args) {
+        dwumianNewtona(9, 2);
+    }
+}
