@@ -1,4 +1,5 @@
 import java.lang.Math;
+import java.util.Scanner;
 
 class HelloWorld {
     //Zadanie 1
@@ -229,7 +230,79 @@ class HelloWorld {
         System.out.print("Suma " + n + " odwrotnosci liczb naturalnych: " + sum);
     }
     
-    public static void main(String[] args) {
-        sumaOdwNaturalnych(100);
+    //Zadanie 13
+    public static boolean czyPalindrom(String wyraz) {
+        int len = wyraz.length();
+        for(int i = 0; i < len/2; i++) {
+            if(wyraz.charAt(i) != wyraz.charAt(len - 1 - i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    //Zadanie 16
+    public static boolean czyDoskonala(int n) {
+        int sum = 0;
+        if (n < 1) {
+            return false;
+        }
+        else {
+            for(int i = 1; i <= n/2; i++) {
+                if (n % i == 0) {
+                    sum += i;
+                }
+            }
+            if (sum == n) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+    
+    //Zadanie 17
+    public static boolean czyPierwsza(int n) {
+        if(n < 2) {
+            return false;
+        }
+        else {
+            for(int i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
+    //Zadanie 18
+    public static void NWD(int a, int b) {
+        System.out.print("Najwiekszym wspolnym dzielnikiem dla " + a + " i " + b + " jest ");
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        System.out.print(a);
+    }
+    
+    //Zadanie 19
+    public static void wczytajTablice(int n) {
+        Scanner scanner = new Scanner(System.in);
+        List<Integer> l = new ArrayList<Integer>();
+        for(int i = 0; i < n; i++) {
+            System.out.print("Podaj liczbe: ");
+            int num = scanner.nextInt();
+            l.add(num);
+        }
+        int len = l.length();
+        int[] tab = l.toArray(new int[len]);
+        System.out.print(tab);
+    }
+    
+        public static void main(String[] args) {
+            wczytajTablice(10);
     }
 }
