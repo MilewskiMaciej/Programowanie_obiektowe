@@ -76,15 +76,30 @@ class HelloWorld {
         }
     }
     
-    //Zadanie 6 (dokończyć)
+    //Zadanie 6
     public static void piramida(int n, int variant) {
         if(variant == 1) {
             for(int i = 1; i <= n; i++) {
                 System.out.println("* ".repeat(i));
             }
         }
+        else if(variant == 2) {
+            for(int i = 1; i <= n; i++) {
+                for(int j = 0; j < n - i; j++) {
+                    System.out.print(" ");
+                }
+                for(int k = 0; k < 2 * i - 1; k++) {
+                    System.out.print("*");
+                }
+                System.out.println();
+            }
+        }
+        else {
+            System.out.println("Podano zly wariant");
+        }
     }
     
+    //Zadanie 7
     public static void silnia(int n) {
         int wynik = 1;
         for(int i = 1; i <= n; i++) {
@@ -93,6 +108,7 @@ class HelloWorld {
         System.out.print(wynik);
     }
     
+    //Zadanie 8
     public static void silniaPodwojna(int n) {
         int wynik = 1;
         int i = n;
@@ -103,6 +119,7 @@ class HelloWorld {
         System.out.print(wynik);
     }
     
+    //Zadanie 9
     public static void silnia(int m, int n) {
         int wynik = 1;
         int i = n;
@@ -113,6 +130,7 @@ class HelloWorld {
         System.out.print(wynik);
     }
     
+    //Zadanie 10
     public static void dwumianNewtona(int n, int k) {
         int wynikS = 1;
         int wynikK = 1;
@@ -131,7 +149,87 @@ class HelloWorld {
         System.out.print(wynikOstateczny);
     }
     
+    //Zadanie 11
+    public static void ciagFibonacciego(int n) {
+        int fib1 = 0;
+        int fib2 = 1;
+        if (n == 0) {
+            System.out.print("Blad");
+        }
+        else if (n == 1) {
+                System.out.print("Pierwszy element ciagu Fibonacciego: " + fib1);
+        }
+        else if (n == 2) {
+            System.out.print("Pierwsze 2 elementy ciagu Fibonacciego: " + fib1 + ", " + fib2);
+        }
+        else {
+            System.out.print("Pierwsze " + n + " elemetow ciagu Fibonacciego: ");
+            System.out.print(fib1);
+            System.out.print(", " + fib2);
+            for(int i = 3; i <= n; i++) {
+                int fibN = fib1 + fib2;
+                System.out.print(", " + fibN);
+                fib1 = fib2;
+                fib2 = fibN;
+            }
+        }
+    }
+    
+    //Zadanie 12, punkt 1
+    public static void sumaNaturalnych(int n) {
+        int sum = 0;
+        for(int i = 0; i <= n; i++) {
+            sum += i;
+        }
+        System.out.print("Suma " + n + " liczb naturalnych: " + sum);
+    }
+    
+    //Zadanie 12, punkt 2
+    public static void sumaParzystych(int n) {
+        int sum = 0;
+        for(int i = 0; i <= n; i++) {
+            sum += i*2;
+        }
+        System.out.print("Suma " + n + " liczb parzystych: " + sum);
+    }
+    
+    //Zadanie 12, punkt 3
+    public static void sumaNieparzystych(int n) {
+        int sum = 0;
+        for(int i = 1; i <= n; i++) {
+            sum += (i*2) - 1;
+        }
+        System.out.print("Suma " + n + " liczb nieparzystych: " + sum);
+    }
+    
+    //Zadanie 12, punkt 4
+    public static void sumaKwaNaturalnych(int n) {
+        int sum = 0;
+        for(int i = 0; i <= n; i++) {
+            sum += Math.pow(i, 2);
+        }
+        System.out.print("Suma " + n + " kwadratow liczb naturalnych: " + sum);
+    }
+    
+    //Zadanie 12, punkt 5
+    public static void sumaSzeNaturalnych(int n) {
+        int sum = 0;
+        for(int i = 1; i <= n; i++) {
+            sum += Math.pow(i, 3);
+        }
+        System.out.print("Suma " + n + " szescianow liczb naturalnych: " + sum);
+    }
+    
+    //Zadanie 12, punkt 6
+    public static void sumaOdwNaturalnych(int n) {
+        double sum = 0.0;
+        for(int i = 1; i <= n; i++) {
+            sum += 1.0/i;
+        }
+        System.out.print("Suma " + n + " odwrotnosci liczb naturalnych: " + sum);
+    }
+    
     public static void main(String[] args) {
-        liczbyPierwsze(10);
+        sumaOdwNaturalnych(100);
     }
 }
