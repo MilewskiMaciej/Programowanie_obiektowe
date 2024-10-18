@@ -1,4 +1,5 @@
 import java.util.concurrent.ThreadLocalRandom;
+import java.lang.Math;
 
 class lab_4 {
     //Zadanie 1
@@ -96,6 +97,63 @@ class lab_4 {
         System.out.println("Ilosc liczb minimalnych w tablicy: " + sum);
     }
 
+    //Zadanie 4, punkt 1
+    public static void sumaDodatnich(int[] tab) {
+        int len = tab.length;
+        int sum = 0;
+        for(int i = 0; i < len; i++) {
+            if(tab[i] > 0) {
+                sum += tab[i];
+            }
+        }
+        System.out.println("Suma liczb dodatnich w tablicy: " + sum);
+    }
+
+    //Zadanie 4, punkt 2
+    public static void sumaUjemnych(int[] tab) {
+        int len = tab.length;
+        int sum = 0;
+        for(int i = 0; i < len; i++) {
+            if(tab[i] < 0) {
+                sum += tab[i];
+            }
+        }
+        System.out.println("Suma liczb ujemnych w tablicy: " + sum);
+    }
+
+    //Zadanie 4, punkt 3
+    public static void sumaOdwrotnosci(int[] tab) {
+        int len = tab.length;
+        double sum = 0.0;
+        for(int i = 0; i < len; i++) {
+            if(tab[i] != 0) {
+                sum += 1.0/tab[i];
+            }
+        }
+        System.out.println("Suma odwrotnosci liczb w tablicy: " + sum);
+    }
+
+    //Zadanie 4, punkt 4
+    public static void sredniaArytmetyczna(int[] tab) {
+        int len = tab.length;
+        double sum = 0.0;
+        for(int i = 0; i < len; i++) {
+            sum += tab[i];
+        }
+        System.out.println("Srednia arytmetyczna liczb w tablicy: " + sum/2.0);
+    }
+
+    //Zadanie 4, punkt 5
+    public static void sredniaGeometryczna(int[] tab) {
+        int len = tab.length;
+        int il = 1;
+        for(int i = 0; i < len; i++) {
+            il = il * tab[i];
+        }
+        double eq = Math.pow(il, 1.0/len);
+        System.out.println("Srednia geometryczna liczb w tablicy: " + eq);
+    }
+
     public static void wypisz(int[] tab) {
         int len = tab.length;
         System.out.print("Tablica: [ ");
@@ -106,7 +164,7 @@ class lab_4 {
     }
 
     public static void main(String[] args) {
-        int[] tab = generujTablice(10, -2, 50);
+        int[] tab = generujTablice(10, 0, 50);
         wypisz(tab);
         ileNieparzystych(tab);
         ileParzystych(tab);
@@ -115,5 +173,9 @@ class lab_4 {
         ileZerowych(tab);
         ileMaxymalnych(tab);
         ileMinimalnych(tab);
+        sumaDodatnich(tab);
+        sumaUjemnych(tab);
+        sumaOdwrotnosci(tab);
+        sredniaArytmetyczna(tab);
     }
 }
