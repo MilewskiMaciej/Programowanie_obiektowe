@@ -164,7 +164,7 @@ class lab_4 {
     }
 
     public static void main(String[] args) {
-        int[] tab = generujTablice(10, 0, 50);
+        int[] tab = generujTablice(10, 2, 50);
         wypisz(tab);
         ileNieparzystych(tab);
         ileParzystych(tab);
@@ -177,5 +177,6 @@ class lab_4 {
         sumaUjemnych(tab);
         sumaOdwrotnosci(tab);
         sredniaArytmetyczna(tab);
+        sredniaGeometryczna(tab);
     }
 }
