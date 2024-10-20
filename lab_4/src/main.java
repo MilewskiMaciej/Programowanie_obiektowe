@@ -1,5 +1,6 @@
 import java.util.concurrent.ThreadLocalRandom;
 import java.lang.Math;
+import java.util.Arrays;
 
 class lab_4 {
     //Zadanie 1
@@ -12,7 +13,25 @@ class lab_4 {
         tab[n - 1] = maxWartosc;
         return tab;
     }
-
+    
+    //Zadanie 2
+    public static void wypiszTablice(int[] tab, int n, int m) {
+        int len = Arrays.stream(tab).mapToObj(String::valueOf).mapToInt(String::length).max().orElse(1);
+        int index = 0;
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < m; j++) {
+                if(index < tab.length) {
+                    System.out.printf("%" + len + "d ", tab[index]);
+                }
+                else {
+                    System.out.printf("%" + len + "s ", " ");
+                }
+                index++;
+            }
+            System.out.println();
+        }
+    }
+    
     //Zadanie 3, punkt 1
     public static void ileNieparzystych(int[] tab) {
         int len = tab.length;
@@ -96,6 +115,25 @@ class lab_4 {
         }
         System.out.println("Ilosc liczb minimalnych w tablicy: " + sum);
     }
+    
+    //Zadanie 3, punkt 8
+    public static void ileUnikalnych(int[] tab) {
+        int sum = 0;
+        int len = tab.length;
+        for(int i = 0; i < len; i++) {
+            boolean un = true;
+            for(int j = 0; j < i; j++) {
+                if(tab[i] == tab[j]) {
+                    un = false;
+                    break;
+                }
+            }
+            if(un) {
+                sum += 1;
+            }
+        }
+        System.out.println("Ilosc liczb unikalnych w tablicy: " + sum);
+    }
 
     //Zadanie 4, punkt 1
     public static void sumaDodatnich(int[] tab) {
@@ -153,6 +191,17 @@ class lab_4 {
         double eq = Math.pow(il, 1.0/len);
         System.out.println("Srednia geometryczna liczb w tablicy: " + eq);
     }
+    
+    //Zadanie 4, punkt 6
+    public static void sredniaHarmoniczna(int[] tab) {
+        int len = tab.length;
+        int mian = 1;
+        for(int i = 0; i < len; i++) {
+            mian += 1/tab[i];
+        }
+        double h = len/mian;
+        System.out.println("Srednia harmoniczna liczb w tablicy: " + h);
+    }
 
     public static void wypisz(int[] tab) {
         int len = tab.length;
@@ -166,6 +215,7 @@ class lab_4 {
     public static void main(String[] args) {
         int[] tab = generujTablice(10, 2, 50);
         wypisz(tab);
+        wypiszTablice(tab, 5, 2);
         ileNieparzystych(tab);
         ileParzystych(tab);
         ileDodatnich(tab);
@@ -173,10 +223,12 @@ class lab_4 {
         ileZerowych(tab);
         ileMaxymalnych(tab);
         ileMinimalnych(tab);
+        ileUnikalnych(tab);
         sumaDodatnich(tab);
         sumaUjemnych(tab);
         sumaOdwrotnosci(tab);
         sredniaArytmetyczna(tab);
         sredniaGeometryczna(tab);
+        sredniaHarmoniczna(tab);
     }
 }
