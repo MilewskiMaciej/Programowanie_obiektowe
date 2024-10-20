@@ -200,7 +200,67 @@ class lab_4 {
             mian += 1/tab[i];
         }
         double h = len/mian;
-        System.out.println("Srednia harmoniczna liczb w tablicy: " + h);
+        System.out.println("Srednia harmoniczna liczb w tablicy: " + len);
+    }
+    
+    //Zadanie 5, punkt 1
+    public static void funkcjaLiniowa(int[] tab, int a, int b) {
+        int len = tab.length;
+        int[] fun = new int[len];
+        System.out.print("Wyniki funkcji liniowej dla a = " + a + " i b = " + b + ": [ ");
+        for(int i = 0; i < len; i++) {
+            fun[i] = (a * tab[i]) + b;
+        }
+        for(int j = 0; j < len; j++) {
+            System.out.print(fun[j] + " ");
+        }
+        System.out.println("]");
+    }
+    
+    //Zadanie 5, punkt 2
+    public static void funkcjaKwadratowa(int[] tab, int a, int b, int c) {
+        int len = tab.length;
+        int[] fun = new int[len];
+        System.out.print("Wyniki funkcji kwadratowej dla a = " + a + ", b = " + b + " i c = " + c + ": [ ");
+        for(int i = 0; i < len; i++) {
+            fun[i] = (int)Math.pow(a*tab[i], 2) + b*tab[i] + c;
+        }
+        for(int j = 0; j < len; j++) {
+            System.out.print(fun[j] + " ");
+        }
+        System.out.println("]");
+    }
+    
+    //Zadanie 5, punkt 3
+    public static void funkcjaWykladnicza(int[] tab, int a) {
+        int len = tab.length;
+        int[] fun = new int[len];
+        System.out.print("Wyniki funkcji wykladniczej dla a = " + a + ": [");
+        for(int i = 0; i < len; i++) {
+            fun[i] = (int)Math.pow(a, tab[i]);
+        }
+        for(int j = 0; j < len; j++) {
+            System.out.print(fun[j] + " ");
+        }
+        System.out.println("]");
+    }
+    
+    //Zadanie 6, punkt 3
+    public static void odwrocTablice(int[] tab) {
+        int l = 0;
+        int r = tab.length - 1;
+        while(l < r) {
+            int temp = tab[l];
+            tab[l] = tab[r];
+            tab[r] = temp;
+            l++;
+            r--;
+        }
+        System.out.print("Odwrocona tablica: [ ");
+        for(int i = 0; i < tab.length; i++) {
+            System.out.print(tab[i] + " ");
+        }
+        System.out.println("]");
     }
 
     public static void wypisz(int[] tab) {
@@ -230,5 +290,9 @@ class lab_4 {
         sredniaArytmetyczna(tab);
         sredniaGeometryczna(tab);
         sredniaHarmoniczna(tab);
+        funkcjaLiniowa(tab, 5, 2);
+        funkcjaKwadratowa(tab, 5, 2, 4);
+        funkcjaWykladnicza(tab, 2);
+        odwrocTablice(tab);
     }
 }
