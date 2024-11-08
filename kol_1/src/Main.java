@@ -75,6 +75,7 @@ public class Main {
         System.out.println();
     }
 
+    //Zadanie 7
     public static void minMaxSekwencjaCollatza(int n, int c) {
         System.out.println("Zadanie 7: ");
         int min = c;
