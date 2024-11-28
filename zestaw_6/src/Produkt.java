@@ -20,12 +20,14 @@ class Produkt {
         System.out.println("Ilosc " + nazwa + " po dodaniu: " + iloscNaMagazynie);
     }
 
-    public void usunZMagazynu(int u) {
+    public boolean usunZMagazynu(int u) {
         if(iloscNaMagazynie >= u && u > 0) {
             iloscNaMagazynie -= u;
             System.out.println("Ilosc " + nazwa + " po usunieciu: " + iloscNaMagazynie);
+            return true;
         } else {
             System.out.println("Nie mozna usunac produktu");
+            return false;
         }
     }
 }
