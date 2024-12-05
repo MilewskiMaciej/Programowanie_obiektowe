@@ -4,11 +4,13 @@ import java.util.List;
 public class Klient {
     String imie;
     String nazwisko;
+    Adres adres;
     List<Zamowienie> listaZamowien;
 
-    public Klient(String imie, String nazwisko) {
+    public Klient(String imie, String nazwisko, Adres adres) {
         this.imie = imie;
         this.nazwisko = nazwisko;
+        this.adres = adres;
         this.listaZamowien = new ArrayList<>();
     }
 
@@ -25,6 +27,8 @@ public class Klient {
             for(int i = 0; i < listaZamowien.size(); i++) {
                 System.out.println("Zamowienie " + (i + 1) + ":");
                 listaZamowien.get(i).wyswietlZamowienie();
+                System.out.println("Adres: ");
+                adres.pokaz();
                 System.out.println();
             }
         }

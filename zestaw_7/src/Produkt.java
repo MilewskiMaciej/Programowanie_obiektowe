@@ -9,6 +9,14 @@ class Produkt {
         this.iloscNaMagazynie = c;
     }
 
+    public String getNazwa() {
+        return nazwa;
+    }
+
+    public double getCena() {
+        return cena;
+    }
+
     public void wyswietlInformacje() {
         System.out.println("Nazwa produktu: " + nazwa);
         System.out.println("Cena: " + cena);

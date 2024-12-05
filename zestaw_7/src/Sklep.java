@@ -1,24 +1,31 @@
 import java.util.Map;
-import java.util.HashMap;
+import java.time.LocalDate;
 
 public class Sklep {
-    Magazyn magazyn;
+    String nazwaSklepu;
+    LocalDate dataPowstania;
+    Magazyn magazynSklepu;
 
-    public Sklep() {
-        this.magazyn = new Magazyn();
+    public Sklep(String nazwaSklepu, LocalDate dataPowstania, Magazyn magazynSklepu) {
+        if(dataPowstania.isAfter(LocalDate.now())) {
+            System.out.println("Data powstania jest w przyszłości, a to jest nielegalne.");
+        }
+        this.nazwaSklepu = nazwaSklepu;
+        this.dataPowstania = dataPowstania;
+        this.magazynSklepu = magazynSklepu;
     }
 
     public void dodajProdukt(Produkt produkt, int ilosc) {
-        magazyn.dodajProdukt(produkt, ilosc);
+        magazynSklepu.dodajProdukt(produkt, ilosc);
     }
 
     public void wyswietlOferty() {
-    magazyn.wyswietlAsortyment();
+    magazynSklepu.wyswietlAsortyment();
     }
 
     public Produkt wyszukajProdukt(String nazwa) {
-        for(Map.Entry<Produkt, Integer> entry : magazyn.produkty.entrySet()) {
-            if(entry.getKey().getNazwa.equalsIgnoreCase(nazwa)) {
+        for(Map.Entry<Produkt, Integer> entry : magazynSklepu.produkty.entrySet()) {
+            if(entry.getKey().getNazwa().equalsIgnoreCase(nazwa)) {
                 return entry.getKey();
             }
         }
@@ -27,7 +34,7 @@ public class Sklep {
 
     public boolean zakupy(KoszykZakupowy koszyk, String nazwaProduktu, int ilosc) {
         Produkt produkt = wyszukajProdukt(nazwaProduktu);
-        if (produkt != null && magazyn.zdejmijProdukt(produkt, ilosc)) {
+        if (produkt != null && magazynSklepu.zdejmijProdukt(produkt, ilosc)) {
             koszyk.dodajProdukt(produkt, ilosc);
             return true;
         }

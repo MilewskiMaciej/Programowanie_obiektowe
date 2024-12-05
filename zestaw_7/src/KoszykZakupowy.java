@@ -1,16 +1,16 @@
-import java.util.List;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 class KoszykZakupowy {
-    List<Produkt> listaProduktow;
+    Map<Produkt, Integer> produkty;
 
     public KoszykZakupowy() {
-        this.listaProduktow = new ArrayList<>();
+        this.produkty = new HashMap<>();
     }
     public void dodajProdukt(Produkt produkt, int ilosc) {
         if (produkt != null && ilosc <= produkt.iloscNaMagazynie) {
             produkt.usunZMagazynu(ilosc);
-            listaProduktow.add(new Produkt(produkt.nazwa, produkt.cena, ilosc));
+            produkty.put(produkt, produkty.getOrDefault(produkt, 0) + ilosc);
             System.out.println("Dodano " + ilosc + " sztuk " + produkt.nazwa + " do koszyka");
         } else {
             System.out.println("Ty nie muozesz dodac " + produkt.nazwa + " do koszyka");
@@ -18,33 +18,31 @@ class KoszykZakupowy {
     }
     public void wyswietlZawartoscKoszyka() {
         System.out.println("Twoj koszyk:");
-        for(Produkt produkt : listaProduktow) {
-            System.out.println("- " + produkt.nazwa + ", ilosc: " + produkt.iloscNaMagazynie);
+        for(Map.Entry<Produkt, Integer> entry : produkty.entrySet()) {
+            System.out.println("- " + entry.getKey().getNazwa() + ", ilosc: " + entry.getValue());
         }
     }
 
     public double obliczCalkowitaWartosc() {
         double suma = 0;
-        for(Produkt produkt : listaProduktow) {
-            suma += produkt.cena * produkt.iloscNaMagazynie;
+        for(Map.Entry<Produkt, Integer> entry : produkty.entrySet()) {
+            suma += entry.getKey().getCena() * entry.getValue();
         }
         return suma;
     }
 
     public boolean contains(Produkt produkt) {
-        return listaProduktow.contains(produkt);
+        return produkty.containsKey(produkt);
     }
 
     public void usunProdukt(Produkt produkt, int ilosc) {
-        if(listaProduktow.contains(produkt)) {
-            int usuniete = 0;
-            for(int i = 0; i < ilosc; i++) {
-                if(listaProduktow.remove(produkt)) {
-                    usuniete++;
-                }
+        if(produkty.containsKey(produkt)) {
+            int aktualnaIlosc = produkty.get(produkt);
+            if (ilosc >= aktualnaIlosc) {
+                produkty.remove(produkt);
+            } else {
+                produkty.put(produkt, aktualnaIlosc - ilosc);
             }
-            produkt.dodajDoMagazynu(usuniete);
-            System.out.println("Usunieto " + usuniete + " sztuk " + produkt.nazwa);
         } else {
             System.out.println("Produkt " + produkt.nazwa + " nie znajduje sie w koszyku");
         }
