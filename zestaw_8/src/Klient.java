@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Klient {
+public class Klient implements IKlient {
     private String imie;
     private String nazwisko;
     private Adres adres;
@@ -14,6 +14,7 @@ public class Klient {
         this.listaZamowien = new ArrayList<>();
     }
 
+    @Override
     public String getImie(String imie) {
         return imie;
     }
@@ -25,6 +26,7 @@ public class Klient {
         this.imie = imie;
     }
 
+    @Override
     public String getNazwisko() {
         return nazwisko;
     }
@@ -36,6 +38,7 @@ public class Klient {
         this.nazwisko = nazwisko;
     }
 
+    @Override
     public Adres getAdres() {
         return adres;
     }
@@ -48,15 +51,12 @@ public class Klient {
     }
 
     @Override
-    public int hashCode() {
-        return imie.hashCode() + nazwisko.hashCode() + adres.hashCode();
-    }
-
     public void dodajZamowienie(Zamowienie zamowienie) {
         listaZamowien.add(zamowienie);
         System.out.println("Dodano zamowienie dla klienta: " + imie + " " + nazwisko);
     }
 
+    @Override
     public void wyswietlHistorieZamowien() {
         System.out.println("Historia zamowien dla klienta: " + imie + " " + nazwisko);
         if(listaZamowien.isEmpty()) {
@@ -72,11 +72,17 @@ public class Klient {
         }
     }
 
+    @Override
     public double obliczLacznyKosztZamowien() {
         double koszt = 0;
         for(Zamowienie zamowienie : listaZamowien) {
             koszt += zamowienie.koszyk.obliczCalkowitaWartosc();
         }
         return koszt;
+    }
+
+    @Override
+    public int hashCode() {
+        return imie.hashCode() + nazwisko.hashCode() + adres.hashCode();
     }
 }

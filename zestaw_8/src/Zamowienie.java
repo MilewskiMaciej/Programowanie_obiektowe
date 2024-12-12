@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Zamowienie {
+public class Zamowienie implements IZamowienie {
     KoszykZakupowy koszyk;
     String statusZamowienia;
     Platnosc platnosc;
@@ -11,16 +11,25 @@ public class Zamowienie {
         this.platnosc = new Platnosc(koszyk.obliczCalkowitaWartosc());
     }
 
+    @Override
+    public String getStatusZamowienia() {
+        return statusZamowienia;
+    }
+
+    @Override
     public void ustawStatusZamowienia(String nowyStatus) {
         this.statusZamowienia = nowyStatus;
         System.out.println("Status twojego zamowienia zostal zmieniony na " + statusZamowienia);
     }
+
+    @Override
     public void wyswietlZamowienie() {
         System.out.println("Status zamowienia: " + statusZamowienia);
         koszyk.wyswietlZawartoscKoszyka();
         System.out.println("Status platnosci: " + platnosc.getStatusPlatnosci());
     }
 
+    @Override
     public void finalizujZamowienie() {
         if(platnosc.getStatusPlatnosci().equals("Oplacone")) {
             this.statusZamowienia = "Gotowe do wysylki";
@@ -30,6 +39,7 @@ public class Zamowienie {
         }
     }
 
+    @Override
     public void zwrocProdukt(Produkt produkt, int ilosc) {
         if(koszyk.contains(produkt)) {
             koszyk.usunProdukt(produkt, ilosc);

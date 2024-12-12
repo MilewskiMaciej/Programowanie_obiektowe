@@ -1,4 +1,4 @@
-class Produkt {
+public class Produkt implements IProdukt {
     String nazwa;
     double cena;
     int iloscNaMagazynie;
@@ -9,6 +9,7 @@ class Produkt {
         setIloscNaMagazynie(c);
     }
 
+    @Override
     public String getNazwa() {
         return nazwa;
     }
@@ -20,6 +21,7 @@ class Produkt {
         this.nazwa = nazwa;
     }
 
+    @Override
     public double getCena() {
         return cena;
     }
@@ -31,6 +33,7 @@ class Produkt {
         this.cena = cena;
     }
 
+    @Override
     public int getIloscNaMagazynie() { return iloscNaMagazynie; }
 
     public void setIloscNaMagazynie(int iloscNaMagazynie) {
@@ -40,17 +43,20 @@ class Produkt {
         this.iloscNaMagazynie = iloscNaMagazynie;
     }
 
+    @Override
     public void wyswietlInformacje() {
         System.out.println("Nazwa produktu: " + nazwa);
         System.out.println("Cena: " + cena);
         System.out.println("Ilosc na magazynie: " + iloscNaMagazynie);
     }
 
+    @Override
     public void dodajDoMagazynu(int ilosc) {
         iloscNaMagazynie += ilosc;
         System.out.println("Ilosc " + nazwa + " po dodaniu: " + iloscNaMagazynie);
     }
 
+    @Override
     public boolean usunZMagazynu(int u) {
         if(iloscNaMagazynie >= u && u > 0) {
             iloscNaMagazynie -= u;

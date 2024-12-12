@@ -1,4 +1,4 @@
-public class Platnosc {
+public class Platnosc implements IPlatnosc {
     private double kwota;
     private String statusPlatnosci;
 
@@ -7,6 +7,7 @@ public class Platnosc {
         this.statusPlatnosci = "Nieoplacone";
     }
 
+    @Override
     public double getKwota() {
         return kwota;
     }
@@ -18,6 +19,7 @@ public class Platnosc {
         this.kwota = kwota;
     }
 
+    @Override
     public void zaplac(double kwota) {
         if(kwota >= this.kwota) {
             this.kwota = 0;
@@ -27,6 +29,8 @@ public class Platnosc {
             throw new IllegalArgumentException("Ty nie muożesz za to zapuacić");
         }
     }
+
+    @Override
     public String getStatusPlatnosci() {
         return statusPlatnosci;
     }

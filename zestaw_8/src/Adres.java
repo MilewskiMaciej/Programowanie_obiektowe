@@ -1,4 +1,4 @@
-public class Adres {
+public class Adres implements IAdres {
     private String ulica;
     private String numerDomu;
     private String numerMieszkania;
@@ -20,15 +20,18 @@ public class Adres {
         this.kodPocztowy = kodPocztowy;
     }
 
+    @Override
     public void pokaz() {
         System.out.println(kodPocztowy + " " + miasto);
         System.out.println(ulica + " " + numerDomu + (numerMieszkania.isEmpty() ? "" : "/" + numerMieszkania));
     }
 
+    @Override
     public boolean przed(Adres inny) {
         return this.kodPocztowy.compareTo(inny.kodPocztowy) < 0;
     }
 
+    @Override
     public String getUlica() {
         return ulica;
     }
@@ -40,6 +43,7 @@ public class Adres {
         this.ulica = ulica;
     }
 
+    @Override
     public String getNumerDomu() {
         return numerDomu;
     }
@@ -51,6 +55,7 @@ public class Adres {
         this.numerDomu = numerDomu;
     }
 
+    @Override
     public String getNumerMieszkania() {
         return numerMieszkania;
     }
@@ -59,6 +64,7 @@ public class Adres {
         this.numerMieszkania = numerMieszkania;
     }
 
+    @Override
     public String getMiasto() {
         return miasto;
     }
@@ -70,6 +76,7 @@ public class Adres {
         this.miasto = miasto;
     }
 
+    @Override
     public String getKodPocztowy() {
         return kodPocztowy;
     }

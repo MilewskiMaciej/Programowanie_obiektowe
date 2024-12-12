@@ -1,13 +1,14 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class Magazyn {
+public class Magazyn implements IMagazyn {
     Map<Produkt, Integer> produkty;
 
     public Magazyn() {
         this.produkty = new HashMap<>();
     }
 
+    @Override
     public void dodajProdukt(Produkt produkt, int ilosc) {
         if(ilosc <= 0) {
             throw new IllegalArgumentException("Ty nie muożesz dodać 0 produktów");
@@ -15,6 +16,7 @@ public class Magazyn {
         produkty.put(produkt, produkty.getOrDefault(produkt, 0) + ilosc);
     }
 
+    @Override
     public void wyswietlAsortyment() {
         System.out.println("Asortyment magazynu: ");
         for(Map.Entry<Produkt, Integer> entry : produkty.entrySet()) {
@@ -22,6 +24,7 @@ public class Magazyn {
         }
     }
 
+    @Override
     public void zdejmijProdukt(Produkt produkt, int ilosc) {
         if(!produkty.containsKey(produkt) && produkty.get(produkt) < ilosc) {
             throw new IllegalArgumentException("Ty nie muożesz mieć ujemnej ilości produktów");
@@ -32,6 +35,7 @@ public class Magazyn {
         }
     }
 
+    @Override
     public int getIloscProduktu(Produkt produkt) {
         return produkty.getOrDefault(produkt, 0);
     }
