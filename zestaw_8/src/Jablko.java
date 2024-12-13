@@ -1,6 +1,19 @@
-public class Jablko extends ProduktSpozywczy implements Owoc {
-    public Jablko(String nazwa, double cena, int iloscNaMagazynie, String dataWaznosci) {
-        super(nazwa, cena, iloscNaMagazynie, dataWaznosci);
+public class Jablko extends ProduktSpozywczy implements IOwoc {
+    private String kolor;
+    private boolean czyEkologiczne;
+
+    public Jablko(String nazwa, double cena, int iloscNaMagazynie, String dataWaznosci, boolean czyEkologiczne) {
+        super(nazwa, cena, iloscNaMagazynie, dataWaznosci, czyEkologiczne);
+        this.kolor = kolor;
+        this.czyEkologiczne = czyEkologiczne;
+    }
+
+    public String getKolor() {
+        return kolor;
+    }
+
+    public boolean isCzyEkologiczne() {
+        return czyEkologiczne;
     }
 
     @Override
